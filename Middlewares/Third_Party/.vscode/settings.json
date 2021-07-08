@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "iotc_bsp_crypto.h": "c",
+        "iotc_bsp_time.h": "c",
+        "iotc_time.h": "c",
+        "iotc_macros.h": "c",
+        "iotc_allocator.h": "c",
+        "iotc_types.h": "c",
+        "iotc_error.h": "c",
+        "iotc_mqtt.h": "c"
+    }
+}
