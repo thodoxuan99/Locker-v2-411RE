@@ -55,7 +55,7 @@ void SSL_Cert_List();
 
 void SSL_Cert_Delete(char *filename );
 
-char* createGCPJWT(const char* projectId , uint32_t iat ,uint32_t exp );
+char* createGCPJWT(const char* projectId , unsigned long iat ,unsigned long exp );
 
 SSL_Typedef Get_Ssl_Config();
 #endif /* INC_APP_SSL_H_ */

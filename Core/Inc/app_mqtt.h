@@ -11,7 +11,9 @@
 
 #include <app_ssl.h>
 #include "app_uart.h"
+#include "stdio.h"
 
+#define LEN_MESSAGE_SUBCRIBE 	3
 #define kClientidSize 	2
 #define kTopicSize 		2
 
@@ -30,8 +32,8 @@ typedef struct {
 	  char *topic;
 	  char *payload;
 	  uint8_t qos;
-	  uint8_t pub_timeout;
-	  uint8_t retain;
+	  uint8_t pub_timeout ;
+	  uint8_t retain ;
 	  uint8_t dup;
 }MESSAGE_TypeDef;
 
@@ -68,36 +70,37 @@ void MQTT_Start();
 
 void MQTT_Stop();
 
-void MQTT_Accquire_Client(MQTTClient_TypeDef *mqtt_client);
+void MQTT_Accquire_Client();
 
-void MQTT_Release_Client(MQTTClient_TypeDef *mqtt_client);
+void MQTT_Release_Client();
 
-void MQTT_Set_Ssl(MQTTClient_TypeDef *mqtt_client,SSL_Typedef *ssl);
+void MQTT_Set_Ssl();
 
-void MQTT_Will_Topic(MQTTClient_TypeDef *mqtt_client ,  char * topic);
+void MQTT_Will_Topic( char * topic);
 
-void MQTT_Will_Message( MQTTClient_TypeDef *mqtt_client , char * message);
+void MQTT_Will_Message(  char * message);
 
-void MQTT_Connect(MQTTClient_TypeDef *mqtt_client);
+void MQTT_Connect();
 
-void MQTT_Disonnect(MQTTClient_TypeDef *mqtt_client , uint8_t time_out);
+void MQTT_Disonnect( uint8_t time_out);
 
-void MQTT_Topic(MQTTClient_TypeDef *mqtt_client,  char * topic);
+void MQTT_Topic( char * topic);
 
-void MQTT_Payload(MQTTClient_TypeDef *mqtt_client ,  char * payload);
+void MQTT_Payload(char * payload);
 
-void MQTT_Publish(MQTTClient_TypeDef *mqtt_client, MESSAGE_TypeDef *message );
+void MQTT_Publish( MESSAGE_TypeDef *message );
 
-void MQTT_Subcribe_Topic(MQTTClient_TypeDef *mqtt_client , char *topic );
+void MQTT_Subcribe_Topic( char *topic );
 
-void MQTT_Subcribe(MQTTClient_TypeDef *mqtt_client );
+void MQTT_Subcribe();
 
-uint8_t* MQTT_Get_Message_Subcribe(char* topic ,uint8_t* match_length);
+uint8_t* MQTT_Get_Message_Subcribe(uint8_t *mess_length);
 
-void MQTT_UnSubcribe_Topic(MQTTClient_TypeDef *mqtt_client, char *topic );
+void MQTT_UnSubcribe_Topic( char *topic );
 
-void MQTT_UnSubcribe(MQTTClient_TypeDef *mqtt_client);
+void MQTT_UnSubcribe();
 
+FlagStatus MQTT_Message_Subcribe_Checking(char *topic);
 
 
 

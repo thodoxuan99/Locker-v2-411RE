@@ -1,8 +1,7 @@
-app_ssl.c:79:6:SSL_Init	24	static
-app_ssl.c:89:6:SSL_Configure_Ctx	16	static
-app_ssl.c:127:6:SSL_Cert_Down	24	static
-app_ssl.c:143:6:SSL_Cert_List	8	static
-app_ssl.c:151:6:SSL_Cert_Delete	16	static
-app_ssl.c:159:13:Get_Ssl_Config	24	static
-app_ssl.c:163:14:mbedtlsError	16	static
-app_ssl.c:170:7:createGCPJWT	7528	static
+app_ssl.c:69:6:SSL_Init	8	static
+app_ssl.c:75:6:SSL_Configure_Ctx	16	static
+app_ssl.c:113:6:SSL_Cert_Down	24	static
+app_ssl.c:129:6:SSL_Cert_List	8	static
+app_ssl.c:137:6:SSL_Cert_Delete	16	static
+app_ssl.c:145:13:Get_Ssl_Config	24	static
+app_ssl.c:149:14:mbedtlsError	16	static

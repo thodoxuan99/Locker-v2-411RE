@@ -228,9 +228,7 @@ void UART_DEBUG_Transmit_Size(uint8_t *buffer ,uint8_t buffer_size){
 void Setup_Receive_IT(void){
 	if(HAL_UART_Receive_IT(&huart1, &temp, 1)!= HAL_OK){
 		Error_Handler();
-		return HAL_ERROR;
 	}
-	return HAL_OK;
 }
 
 
@@ -286,49 +284,48 @@ void Wait_For_Respone(){
 	return;
 }
 
-uint8_t* Get_Uart_Pattern(char * pattern ,uint8_t* match_length ){
-
-	/* Check if the regex matches the text: */
-	uint8_t payload_length = 0;
-	int index=0;
-	bool matched = false;
-	char *point_to_pattern;
-	char *payload_pattern = "+CMQTTRXPAYLOAD: ";
-	char *end_pattern = "+CMQTTRXEND";
-	Clear_Temp_Buffer();
-	while(1){
-		if(UART_SIM7600_Received_Buffer_Available()){
-			temp_array[index++]=UART_SIM7600_Read_Received_Buffer();
-//			UART_DEBUG_Transmit_Size(temp_array+index-1, 1);
-			char * temp_point_payload = strstr(temp_array,payload_pattern);
-			if(temp_point_payload!=NULL && !matched){
-				point_to_pattern = temp_point_payload;
-				matched = true;
-			}
-
-			char * temp_point_end = strstr(temp_array,end_pattern);
-			if(temp_point_end!=NULL){
-				char temp_char;
-				int point_index=0;
-//				UART_DEBUG_Transmit("\r\nEND\r\n");
-				while(1){
-					temp_char = point_to_pattern[strlen(payload_pattern)+2+point_index];
-					UART_DEBUG_Transmit_Size(&temp_char,1);
-					if(temp_char=='\r'){
-//						UART_DEBUG_Transmit("\r\nBREAK\r\n");
-						break;
-					}
-					payload_length = (uint8_t)temp_char-48;
-					point_index++;
-				}
-				*match_length = payload_length;
-				UART_DEBUG_Transmit_Size(match_length,1);
-//				UART_DEBUG_Transmit("\r\nRETURN\r\n");
-				return point_to_pattern+strlen(payload_pattern)+2+point_index+2;
-			}
-		}
-	}
-}
+//uint8_t* Get_Uart_Pattern(char * pattern ,uint8_t* match_length ){
+//
+//	/* Check if the regex matches the text: */
+//	uint8_t payload_length = 0;
+//	int index=0;
+//	bool matched = false;
+//	char *point_to_pattern;
+//	char *payload_pattern = "+CMQTTRXPAYLOAD: ";
+//	char *end_pattern = "+CMQTTRXEND";
+//	Clear_Temp_Buffer();
+//	while(1){
+//		if(UART_SIM7600_Received_Buffer_Available()){
+//			temp_array[index++]=UART_SIM7600_Read_Received_Buffer();
+////			UART_DEBUG_Transmit_Size(temp_array+index-1, 1);
+//			char * temp_point_payload = strstr(temp_array,payload_pattern);
+//			if(temp_point_payload!=NULL && !matched){
+//				point_to_pattern = temp_point_payload;
+//				matched = true;
+//			}
+//			char * temp_point_end = strstr(temp_array,end_pattern);
+//			if(temp_point_end!=NULL){
+//				char temp_char;
+//				int point_index=0;
+////				UART_DEBUG_Transmit("\r\nEND\r\n");
+//				while(1){
+//					temp_char = point_to_pattern[strlen(payload_pattern)+2+point_index];
+//					UART_DEBUG_Transmit_Size(&temp_char,1);
+//					if(temp_char=='\r'){
+////						UART_DEBUG_Transmit("\r\nBREAK\r\n");
+//						break;
+//					}
+//					payload_length = (uint8_t)temp_char-48;
+//					point_index++;
+//				}
+//				*match_length = payload_length;
+//				UART_DEBUG_Transmit_Size(match_length,1);
+////				UART_DEBUG_Transmit("\r\nRETURN\r\n");
+//				return point_to_pattern+strlen(payload_pattern)+2+point_index+2;
+//			}
+//		}
+//	}
+//}
 
 
 Result_TypeDef Get_AT_Result(){

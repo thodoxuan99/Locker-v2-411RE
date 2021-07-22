@@ -6,6 +6,5 @@ pkparse.c:582:12:pk_get_pk_alg	40	static
 pkparse.c:615:5:mbedtls_pk_parse_subpubkey	56	static
 pkparse.c:810:12:pk_parse_key_sec1_der	80	static
 pkparse.c:948:12:pk_parse_key_pkcs8_unencrypted_der	64	static
-pkparse.c:1163:14:mbedtlsError	16	static
-pkparse.c:1168:5:mbedtls_pk_parse_key	64	static
-pkparse.c:1385:5:mbedtls_pk_parse_public_key	64	static
+pkparse.c:1163:5:mbedtls_pk_parse_key	64	static
+pkparse.c:1376:5:mbedtls_pk_parse_public_key	64	static

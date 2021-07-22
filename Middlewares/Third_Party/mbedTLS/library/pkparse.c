@@ -18,7 +18,7 @@
  *
  *  This file is part of mbed TLS (https://tls.mbed.org)
  */
-#include "app_uart.h"
+
 #if !defined(MBEDTLS_CONFIG_FILE)
 #include "mbedtls/config.h"
 #else
@@ -1160,11 +1160,6 @@ static int pk_parse_key_pkcs8_encrypted_der(
 /*
  * Parse a private key
  */
-static char* mbedtlsError(int errnum) {
-    static char buffer[200];
-    mbedtls_strerror(errnum, buffer, sizeof(buffer));
-    return buffer;
-}
 int mbedtls_pk_parse_key( mbedtls_pk_context *pk,
                   const unsigned char *key, size_t keylen,
                   const unsigned char *pwd, size_t pwdlen )
@@ -1247,17 +1242,13 @@ int mbedtls_pk_parse_key( mbedtls_pk_context *pk,
 #endif /* MBEDTLS_ECP_C */
 
     /* Avoid calling mbedtls_pem_read_buffer() on non-null-terminated string */
-    if( key[keylen - 1] != '\0' ){
-    	        ret = MBEDTLS_ERR_PEM_NO_HEADER_FOOTER_PRESENT;
-    }
-    else{
-    	ret = mbedtls_pem_read_buffer( &pem,
-    	                               "-----BEGIN PRIVATE KEY-----",
-    	                               "-----END PRIVATE KEY-----",
-    	                               key, NULL, 0, &len );
-
-    }
-
+    if( key[keylen - 1] != '\0' )
+        ret = MBEDTLS_ERR_PEM_NO_HEADER_FOOTER_PRESENT;
+    else
+        ret = mbedtls_pem_read_buffer( &pem,
+                               "-----BEGIN PRIVATE KEY-----",
+                               "-----END PRIVATE KEY-----",
+                               key, NULL, 0, &len );
     if( ret == 0 )
     {
         if( ( ret = pk_parse_key_pkcs8_unencrypted_der( pk,
@@ -1375,7 +1366,7 @@ int mbedtls_pk_parse_key( mbedtls_pk_context *pk,
      * twice, once here and once by the caller, but this is
      * also ok and in line with the mbedtls_pk_free() calls
      * on failed PEM parsing attempts. */
-    UART_DEBUG_Transmit("Final\r\n");
+
     return( MBEDTLS_ERR_PK_KEY_INVALID_FORMAT );
 }
 
