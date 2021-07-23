@@ -1,0 +1,7 @@
+app_gpio.c:20:6:GPIO_Init	24	static
+app_gpio.c:39:6:DipSwitch_Init	104	static
+app_gpio.c:60:6:LED_Init	32	static
+app_gpio.c:76:6:Buzzer_Init	32	static
+app_gpio.c:88:6:Get_Dipswitch_ID	4	static
+app_gpio.c:92:6:Turn_On_Buzzer	8	static
+app_gpio.c:96:6:Turn_Off_Buzzer	8	static

@@ -1,4 +1,4 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Core/Src/app_gpio.o: ../Core/Src/app_gpio.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,11 +28,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../MBEDTLS/App/mbedtls.h ../MBEDTLS/App/mbedtls_config.h \
- ../Middlewares/Third_Party/mbedTLS/include/mbedtls/check_config.h \
- ../Core/Inc/app_scheduler.h ../Core/Inc/app_mqtt.h ../Core/Inc/app_ssl.h \
- ../Core/Inc/main.h ../Core/Inc/app_uart.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 
 ../Core/Inc/main.h:
 
@@ -95,19 +91,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-
-../MBEDTLS/App/mbedtls.h:
-
-../MBEDTLS/App/mbedtls_config.h:
-
-../Middlewares/Third_Party/mbedTLS/include/mbedtls/check_config.h:
-
-../Core/Inc/app_scheduler.h:
-
-../Core/Inc/app_mqtt.h:
-
-../Core/Inc/app_ssl.h:
-
-../Core/Inc/main.h:
-
-../Core/Inc/app_uart.h:

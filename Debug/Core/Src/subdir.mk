@@ -6,6 +6,9 @@
 C_SRCS += \
 ../Core/Src/app_can.c \
 ../Core/Src/app_eeprom.c \
+../Core/Src/app_gpio.c \
+../Core/Src/app_init.c \
+../Core/Src/app_led_display.c \
 ../Core/Src/app_mqtt.c \
 ../Core/Src/app_scheduler.c \
 ../Core/Src/app_ssl.c \
@@ -22,6 +25,9 @@ C_SRCS += \
 OBJS += \
 ./Core/Src/app_can.o \
 ./Core/Src/app_eeprom.o \
+./Core/Src/app_gpio.o \
+./Core/Src/app_init.o \
+./Core/Src/app_led_display.o \
 ./Core/Src/app_mqtt.o \
 ./Core/Src/app_scheduler.o \
 ./Core/Src/app_ssl.o \
@@ -38,6 +44,9 @@ OBJS += \
 C_DEPS += \
 ./Core/Src/app_can.d \
 ./Core/Src/app_eeprom.d \
+./Core/Src/app_gpio.d \
+./Core/Src/app_init.d \
+./Core/Src/app_led_display.d \
 ./Core/Src/app_mqtt.d \
 ./Core/Src/app_scheduler.d \
 ./Core/Src/app_ssl.d \
@@ -57,6 +66,12 @@ Core/Src/app_can.o: ../Core/Src/app_can.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-DMBEDTLS_CONFIG_FILE="mbedtls_config.h"' -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares" -I../MBEDTLS/App -I../Middlewares/Third_Party/mbedTLS/include/mbedtls -I../Middlewares/Third_Party/mbedTLS/include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares/Third_Party/base64url" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_can.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/app_eeprom.o: ../Core/Src/app_eeprom.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-DMBEDTLS_CONFIG_FILE="mbedtls_config.h"' -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares" -I../MBEDTLS/App -I../Middlewares/Third_Party/mbedTLS/include/mbedtls -I../Middlewares/Third_Party/mbedTLS/include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares/Third_Party/base64url" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_eeprom.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/app_gpio.o: ../Core/Src/app_gpio.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-DMBEDTLS_CONFIG_FILE="mbedtls_config.h"' -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares" -I../MBEDTLS/App -I../Middlewares/Third_Party/mbedTLS/include/mbedtls -I../Middlewares/Third_Party/mbedTLS/include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares/Third_Party/base64url" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_gpio.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/app_init.o: ../Core/Src/app_init.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-DMBEDTLS_CONFIG_FILE="mbedtls_config.h"' -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares" -I../MBEDTLS/App -I../Middlewares/Third_Party/mbedTLS/include/mbedtls -I../Middlewares/Third_Party/mbedTLS/include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares/Third_Party/base64url" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_init.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/app_led_display.o: ../Core/Src/app_led_display.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-DMBEDTLS_CONFIG_FILE="mbedtls_config.h"' -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares" -I../MBEDTLS/App -I../Middlewares/Third_Party/mbedTLS/include/mbedtls -I../Middlewares/Third_Party/mbedTLS/include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares/Third_Party/base64url" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_led_display.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/app_mqtt.o: ../Core/Src/app_mqtt.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 '-DMBEDTLS_CONFIG_FILE="mbedtls_config.h"' -DUSE_HAL_DRIVER -DSTM32F411xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares" -I../MBEDTLS/App -I../Middlewares/Third_Party/mbedTLS/include/mbedtls -I../Middlewares/Third_Party/mbedTLS/include -I"C:/Users/thodo/STM32CubeIDE/workspace_1.5.0/Locker-v2-411RE/Middlewares/Third_Party/base64url" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/app_mqtt.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/app_scheduler.o: ../Core/Src/app_scheduler.c

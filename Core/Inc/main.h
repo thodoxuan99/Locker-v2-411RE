@@ -42,7 +42,47 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+
+// GPIO Constant
+
+//Led GPIO
+#define LED_PORT					GPIOA
+#define LED_STATUS_PIN				GPIO_PIN_1
+#define LED_RX_PIN					GPIO_PIN_2
+#define LED_TX_PIN					GPIO_PIN_3
+
+//Buzzer GPIO
+#define BUZZER_PORT					GPIOA
+#define BUZZER_PIN					GPIO_PIN_4
+
+//Dipswitch GPIO
+#define DIPSWITCH_PORT				GPIOB
+#define DIPSWITCH_PIN				(uint16_t[]){GPIO_PIN_0,GPIO_PIN_1,GPIO_PIN_2,GPIO_PIN_3,GPIO_PIN_4,GPIO_PIN_5}
+
+
+/*UART Constant*/
+
+//Max buffer for RX
 #define RXBUFFERSIZE 255
+
+
+//UART Simcom7600 Constant
+#define UART_SIMCOM_INSTANCE		USART1
+#define UART_DEBUG_INSTANCE			USART2
+#define UART_485_INSTANCE			USART6
+
+
+/*I2C Constant*/
+
+//EEPROM I2C
+#define I2C_EEPROM_INSTANCE			I2C1
+
+
+/*Timer Constant*/
+#define TIMER_INSTANCE				TIM3
+
+
+
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

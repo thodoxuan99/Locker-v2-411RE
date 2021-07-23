@@ -1,5 +1,8 @@
 "Core/Src/app_can.o"
 "Core/Src/app_eeprom.o"
+"Core/Src/app_gpio.o"
+"Core/Src/app_init.o"
+"Core/Src/app_led_display.o"
 "Core/Src/app_mqtt.o"
 "Core/Src/app_scheduler.o"
 "Core/Src/app_ssl.o"

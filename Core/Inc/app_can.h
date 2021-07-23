@@ -10,7 +10,7 @@
 
 #include "main.h"
 
-CAN_HandleTypeDef hcan;
+
 
 
 #endif /* INC_APP_CAN_H_ */

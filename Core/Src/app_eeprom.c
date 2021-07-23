@@ -28,9 +28,11 @@ EEPROM_Data data2={
 		.size = 10
 };
 
+//Return variable
 HAL_StatusTypeDef ret;
 
-char* log[20];
+//Log string
+char log[20];
 
 void EEPROM_Init(void)
 {
@@ -69,6 +71,9 @@ FlagStatus EEPROM_Check_Available_Dev(void){
 }
 
 void EEPROM_Write_Data(EEPROM_Data *data){
+	if(!EEPROM_Check_Available_Dev()){
+		return;
+	}
 	ret = HAL_I2C_Mem_Write(&hi2c1,EEPROM_I2C_ADDRESS , data->memory_address, data->memory_add, data->data, data->size, 0xFFFF);
 	if(ret!=HAL_OK){
 		UART_DEBUG_Transmit("Write Data to EEPROM Failed");
@@ -93,14 +98,14 @@ void EEPROM_Read_Data(EEPROM_Data *data){
 	}
 	return;
 }
-void EEPROM_Scan_Device(void){
+uint8_t EEPROM_Scan_Device(void){
 	for (int DevAddress = 0; DevAddress < 128; ++DevAddress) {
 		ret = HAL_I2C_IsDeviceReady(&hi2c1, DevAddress, 2, 2);
 		if(ret==HAL_OK){
 			EEPROM_I2C_ADDRESS = DevAddress;
-			sprintf(log,"Device I2C Address:%d\r\n",DevAddress);
+			sprintf(log,"Device I2C Address:%x\r\n",DevAddress);
 			UART_DEBUG_Transmit(log);
-			return;
+			return DevAddress;
 		}
 		else{
 			UART_DEBUG_Transmit(".");

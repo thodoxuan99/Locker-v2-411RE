@@ -1,5 +1,5 @@
-app_eeprom.c:35:6:EEPROM_Init	8	static
-app_eeprom.c:62:12:EEPROM_Check_Available_Dev	4	static
-app_eeprom.c:71:6:EEPROM_Write_Data	40	static
-app_eeprom.c:83:6:EEPROM_Read_Data	40	static
-app_eeprom.c:96:6:EEPROM_Scan_Device	24	static
+app_eeprom.c:37:6:EEPROM_Init	8	static
+app_eeprom.c:64:12:EEPROM_Check_Available_Dev	4	static
+app_eeprom.c:73:6:EEPROM_Write_Data	40	static
+app_eeprom.c:88:6:EEPROM_Read_Data	40	static
+app_eeprom.c:101:9:EEPROM_Scan_Device	24	static

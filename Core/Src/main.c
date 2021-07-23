@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app_scheduler.h"
+#include "app_mqtt.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,7 +43,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -58,9 +58,18 @@ void Led_Init();
 /* USER CODE BEGIN 0 */
 void Led_Control(void){
 	UART_DEBUG_Transmit("In Led Control\r\n");
+	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 }
-void Led_Control2(void){
-	UART_DEBUG_Transmit("In Led Control2\r\n");
+
+void Led_Init(){
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+	GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull  = GPIO_PULLUP;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+
+	GPIO_InitStruct.Pin = GPIO_PIN_5;
+	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 //char log[200];
 
@@ -100,7 +109,8 @@ void Led_Control2(void){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	uint8_t *buf;
+	uint8_t len;
 
   /* USER CODE END 1 */
 
@@ -124,13 +134,25 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
   UART_DEBUG_Init();
+  UART_SIM7600_Init();
+  UART_485_Init();
   Timer_Init();
+  SCH_Add_Task(Led_Control, 0, 100);
+//  SSL_Init();
+//    MQTT_Init();
+//    MQTT_Start();
+//    MQTT_Accquire_Client();
+//    MQTT_Set_Ssl();
+//    MQTT_Connect();
+//    MQTT_Subcribe_Topic("environment");
+//    MQTT_Subcribe();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 //  HAL_GPIO_WritePin(GPIOC, 9, GPIO_PIN_SET);
-  UART_DEBUG_Transmit("Get in While\r\n");
+//  UART_DEBUG_Transmit("Get in While\r\n");
+
   while (1)
   {
     /* USER CODE END WHILE */
@@ -151,10 +173,22 @@ int main(void)
 static void MX_GPIO_Init(void)
 {
 
+
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+//  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : PA5 */
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 

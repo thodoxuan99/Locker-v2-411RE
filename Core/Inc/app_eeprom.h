@@ -19,7 +19,7 @@ typedef struct {
 void EEPROM_Init(void);
 void EEPROM_Write_Data(EEPROM_Data *data);
 void EEPROM_Read_Data(EEPROM_Data *data);
-void EEPROM_Scan_Device(void);
+uint8_t EEPROM_Scan_Device(void);
 
 
 #endif /* INC_APP_EEPROM_H_ */

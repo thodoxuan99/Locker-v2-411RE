@@ -64,8 +64,8 @@ MQTTClient_TypeDef mqtt_client = {
 
 // Default config for MQTT Client
 void MQTT_Init(){
-	sprintf(sub_topic1,"%s/set/states",DEFAULT_ID);
-	sprintf(pub_topic,"%s/get/events",DEFAULT_ID);
+	sprintf(sub_topic1,"%d/set/states",DEFAULT_ID);
+	sprintf(pub_topic,"%d/get/events",DEFAULT_ID);
 }
 
 void MQTT_Start(){
@@ -234,22 +234,23 @@ void MQTT_Subcribe(){
 FlagStatus MQTT_Message_Subcribe_Checking(char *topic){
 	sprintf(payload_pattern,"%s\r\n+CMQTTRXPAYLOAD: %d,%d\r\n",topic,mqtt_client.client_index,LEN_MESSAGE_SUBCRIBE);
 	uint8_t size = strlen(payload_pattern);
-	if(UART_SIM7600_Received_Buffer_Available()){
-		for (int var = 1; var < size; ++var) {
+	int var;
+	while(UART_SIM7600_Received_Buffer_Available()){
+		for (var = 1; var < size; ++var) {
 			payload_cmp[var-1]=payload_cmp[var];
 		}
 		payload_cmp[size-1]=UART_SIM7600_Read_Received_Buffer();
 //		UART_DEBUG_Transmit_Size(payload_cmp+size-1, 1);
-		for (int var = 0; var < size; ++var) {
+		for (var = 0; var < size; ++var) {
 			if(payload_cmp[var]!=payload_pattern[var]){
 				return RESET;
 			}
 		}
-		return SET;
+		if(var == size){
+			return SET;
+		}
 	}
-	else{
-		return RESET;
-	}
+	return RESET;
 }
 
 uint8_t* MQTT_Get_Message_Subcribe(uint8_t * payload_length){
